@@ -1,7 +1,7 @@
 
 name: Build HeyJeri AI APK
 
-on:
+"on":
   workflow_dispatch:
   push:
     branches:
@@ -10,9 +10,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Get source code
+      - name: Checkout source
         uses: actions/checkout@v4
 
       - name: Set up Java
@@ -29,7 +28,7 @@ jobs:
       - name: Build APK
         run: gradle assembleDebug
 
-      - name: Save APK
+      - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: HeyJeriAI-APK
